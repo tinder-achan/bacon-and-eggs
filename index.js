@@ -1,3 +1,9 @@
-import aws from 'aws-sdk';
+import express from 'express';
 
-console.log('project init');
+const app = express();
+
+app.get('/', function(req, res){
+  res.send('hello world 🥓 & 🍳');
+});
+
+app.listen(3000);
