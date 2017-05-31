@@ -1,3 +1,4 @@
+version: 2
 machine:
   node:
     version: 6.9.5
@@ -5,15 +6,11 @@ machine:
     PATH: "${PATH}:${HOME}/${CIRCLE_PROJECT_REPONAME}/node_modules/.bin"
 
 dependencies:
-  pre:
-    - pip install --upgrade pip
-    - pip install awscli
   override:
     - yarn
   cache_directories:
     - ~/.cache/yarn
-
-deployment:
-  master:
-    commands:
-      - yarn run create
+jobs:
+  build:
+    steps:
+      - run: create
