@@ -18,6 +18,5 @@ deployment:
       - yarn run create
 
   pull-requests:
-    branch: /*/
     commands:
       - echo "pull-requests"
