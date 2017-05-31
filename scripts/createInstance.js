@@ -6,6 +6,12 @@ const eb = new AWS.ElasticBeanstalk({
 });
 const BRANCH_NAME = process.env.CIRCLE_BRANCH || 'demo';
 
+eb.describeApplications({}, (err, data) => {
+  if (err) {
+    console.log(err);
+  }
+  console.log(data);
+});
 eb.createEnvironment({
   ApplicationName: 'tester',
   EnvironmentName: BRANCH_NAME,
