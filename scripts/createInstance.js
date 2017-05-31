@@ -4,9 +4,10 @@ import AWS from 'aws-sdk';
 const eb = new AWS.ElasticBeanstalk({
   region: 'us-east-1'
 });
+const BRANCH_NAME = process.env.CIRCLE_BRANCH || 'demo';
 
 eb.createApplication({
-  ApplicationName: 'example'
+  ApplicationName: BRANCH_NAME
 }, (err, data) => {
   if (err) {
     console.log(err);
