@@ -1,0 +1,16 @@
+{
+  "name": "bacon-and-eggs",
+  "version": "1.0.0",
+  "description": "Build script for Bacon and Eggs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tinder-achan/bacon-and-eggs.git"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.60.0"
+  }
+}
