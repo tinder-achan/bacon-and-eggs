@@ -10,6 +10,7 @@ dependencies:
   cache_directories:
     - ~/.cache/yarn
 deployment:
-  master:
+  integration:
+    branch: master
     commands:
       - yarn run create
