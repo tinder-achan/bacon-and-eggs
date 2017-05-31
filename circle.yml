@@ -18,5 +18,6 @@ deployment:
       - yarn run create
 
   pull-requests:
+    branch: /^(?!master|production).*$/
     commands:
-      - echo "pull-requests"
+      - echo "pull request"
