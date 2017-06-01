@@ -1,12 +1,9 @@
 machine:
   node:
     version: 6.9.5
-  environment:
-    PATH: "${PATH}:${HOME}/${CIRCLE_PROJECT_REPONAME}/node_modules/.bin"
+  python:
+    version: 2.7.13
   pre:
-    - sudo apt-get update
-    - sudo apt-get install python-dev
-    - sudo pip install --upgrade setuptools
     - sudo pip install awsebcli
 
 dependencies:
