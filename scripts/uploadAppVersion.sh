@@ -21,9 +21,14 @@ aws s3 cp $ZIP_FILENAME s3://$S3_BUCKET/$ZIP_FILENAME
 
 echo "Uploaded source to S3"
 
-aws elasticbeanstalk create-environment --application-name tester --environment-name $CIRCLE_BRANCH --template-name $ENV_TEMPLATE
-echo "Created environment"
-aws elasticbeanstalk create-application-version --source-bundle S3Bucket=$S3_BUCKET,S3Key=$ZIP_FILENAME
+{
+    aws elasticbeanstalk create-environment --application-name tester --environment-name $CIRCLE_BRANCH --template-name $ENV_TEMPLATE
+    echo "Created environment"
+} || {
+    echo "env already exists"
+}
+
+aws elasticbeanstalk create-application-version --application-name tester --source-bundle S3Bucket=$S3_BUCKET,S3Key=$ZIP_FILENAME
 echo "Created application version"
 aws elasticbeanstalk update-environment --application-name tester --environment-name $CIRCLE_BRANCH --template-name $ENV_TEMPLATE
 echo "Updated environment"
