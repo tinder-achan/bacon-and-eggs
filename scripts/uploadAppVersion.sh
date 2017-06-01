@@ -17,7 +17,7 @@ git archive --format=zip HEAD > $ZIP_FILENAME
 
 aws configure set default.region $S3_REGION
 
-aws s3 cp $ZIP_FILENAME s3://$S3_BUCKET/$ZIP_FILENAME
+aws s3 cp $ZIP_FILENAME s3://$S3_BUCKET/$ZIP_FILENAME --grants full=emailaddress=ehellenbrand@gmail.com
 
 echo "Uploaded source to S3"
 
