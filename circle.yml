@@ -5,6 +5,7 @@ machine:
     version: 2.7.11
   pre:
     - pip install awsebcli --upgrade
+    - pip install awscli
 dependencies:
   override:
     - yarn
@@ -22,4 +23,5 @@ deployment:
     branch: /^(?!master|production).*$/
     commands:
       - echo "pull request"
+      - S3_BUCKET=sandboxes ./scripts/uploadAppVersion.sh
       - bash ./scripts/deploySandbox.sh
