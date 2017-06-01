@@ -1,4 +1,5 @@
 
+eb init
 {
     eb create $CIRCLE_BRANCH --cfg sandboxes
 } || {
