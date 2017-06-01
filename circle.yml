@@ -1,11 +1,9 @@
 machine:
   node:
     version: 6.9.5
-  python:
-    version: 2.7.11
   pre:
-    - pip install awsebcli --upgrade
     - pip install awscli
+    
 dependencies:
   override:
     - yarn
