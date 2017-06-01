@@ -19,16 +19,18 @@ aws configure set default.region $S3_REGION
 
 aws s3 cp $ZIP_FILENAME s3://$S3_BUCKET/sandboxes/$ZIP_FILENAME --grants full=emailaddress=ehellenbrand@gmail.com
 
-echo "Uploaded source to S3"
+# echo "Uploaded source to S3"
 
-{
-    aws elasticbeanstalk create-environment --application-name tester --environment-name $CIRCLE_BRANCH --template-name $ENV_TEMPLATE
-    echo "Created environment"
-} || {
-    echo "env already exists"
-}
+# {
+#     aws elasticbeanstalk create-environment --application-name tester --environment-name $CIRCLE_BRANCH --template-name $ENV_TEMPLATE
+#     echo "Created environment"
+# } || {
+#     echo "env already exists"
+# }
 
-aws elasticbeanstalk create-application-version --application-name tester --version-label $ZIP_FILENAME --source-bundle S3Bucket=$S3_BUCKET,S3Key=sandboxes/$ZIP_FILENAME
-echo "Created application version"
-aws elasticbeanstalk update-environment --application-name tester --environment-name $CIRCLE_BRANCH --version-label $ZIP_FILENAME
-echo "Updated environment"
+# aws elasticbeanstalk create-application-version --application-name tester --version-label $ZIP_FILENAME --source-bundle S3Bucket=$S3_BUCKET,S3Key=sandboxes/$ZIP_FILENAME
+# echo "Created application version"
+# aws elasticbeanstalk update-environment --application-name tester --environment-name $CIRCLE_BRANCH --version-label $ZIP_FILENAME
+# echo "Updated environment"
+
+node ./scripts/PRComment.js 
