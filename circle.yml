@@ -4,8 +4,8 @@ machine:
   python:
     version: 2.7.13
   pre:
-    - sudo pip install awsebcli 'awsebcli==3.7.4' --force-reinstall
-    
+    - sudo pip install 'awsebcli==3.7.4' --force-reinstall
+
 dependencies:
   override:
     - yarn
