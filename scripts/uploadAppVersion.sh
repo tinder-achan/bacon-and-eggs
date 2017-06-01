@@ -30,5 +30,5 @@ echo "Uploaded source to S3"
 
 aws elasticbeanstalk create-application-version --application-name tester --source-bundle S3Bucket=$S3_BUCKET,S3Key=$ZIP_FILENAME
 echo "Created application version"
-aws elasticbeanstalk update-environment --application-name tester --environment-name $CIRCLE_BRANCH --template-name $ENV_TEMPLATE
+aws elasticbeanstalk update-environment --application-name tester --environment-name $CIRCLE_BRANCH
 echo "Updated environment"
