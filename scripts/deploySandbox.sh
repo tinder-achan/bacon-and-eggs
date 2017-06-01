@@ -1,5 +1,3 @@
-
-eb init tester
 {
     eb create $CIRCLE_BRANCH --cfg sandboxes
 } || {
