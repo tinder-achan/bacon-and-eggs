@@ -2,7 +2,7 @@ machine:
   node:
     version: 6.9.5
   python:
-    version: 2.7.13
+    version: 3.4
   pre:
     - sudo pip install awsebcli --upgrade
 dependencies:
