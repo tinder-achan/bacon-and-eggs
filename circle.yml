@@ -23,5 +23,5 @@ deployment:
     branch: /^(?!master|production).*$/
     commands:
       - echo "pull request"
-      - S3_BUCKET=sandboxes ./scripts/uploadAppVersion.sh
+      - bash ./scripts/uploadAppVersion.sh
       - bash ./scripts/deploySandbox.sh
