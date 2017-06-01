@@ -4,7 +4,7 @@ machine:
   python:
     version: 2.7.13
   pre:
-    - sudo pip install --upgrade
+    - sudo pip install awsebcli --upgrade
 dependencies:
   override:
     - yarn
