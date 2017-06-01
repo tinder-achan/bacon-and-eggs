@@ -1,5 +1,5 @@
 S3_REGION=us-west-1
-S3_BUCKET=sandboxes
+S3_BUCKET=elasticbeanstalk-us-west-1-648980024845/sandboxes
 ZIP_FILENAME=$CIRCLE_BRANCH-$CIRCLE_SHA1-$CIRCLE_BUILD_NUM.zip
 
 
