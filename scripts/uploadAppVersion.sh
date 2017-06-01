@@ -1,5 +1,5 @@
 S3_REGION=us-west-1
-S3_BUCKET=elasticbeanstalk-us-west-1-648980024845/sandboxes
+S3_BUCKET=elasticbeanstalk-us-west-1-648980024845
 ZIP_FILENAME=$CIRCLE_BRANCH-$CIRCLE_SHA1-$CIRCLE_BUILD_NUM.zip
 ENV_TEMPLATE=sandboxes
 
@@ -28,7 +28,7 @@ echo "Uploaded source to S3"
     echo "env already exists"
 }
 
-aws elasticbeanstalk create-application-version --application-name tester --version-label $ZIP_FILENAME --source-bundle S3Bucket=$S3_BUCKET,S3Key=$ZIP_FILENAME
+aws elasticbeanstalk create-application-version --application-name tester --version-label $ZIP_FILENAME --source-bundle S3Bucket=$S3_BUCKET,S3Key=sandboxes/$ZIP_FILENAME
 echo "Created application version"
 aws elasticbeanstalk update-environment --application-name tester --environment-name $CIRCLE_BRANCH
 echo "Updated environment"
