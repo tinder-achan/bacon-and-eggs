@@ -4,7 +4,7 @@ machine:
   python:
     version: 2.7.13
   pre:
-    - sudo pip install awsebcli
+    - sudo pip install awsebcli --ignore-installed setuptools
 
 dependencies:
   override:
