@@ -3,11 +3,15 @@ machine:
     version: 6.9.5
   environment:
     PATH: "${PATH}:${HOME}/${CIRCLE_PROJECT_REPONAME}/node_modules/.bin"
+  pre:
+    - sudo apt-get update
+    - sudo apt-get install python-dev
+    - sudo python -m pip install -U pip
+    - sudo pip install awsebcli
 
 dependencies:
   override:
     - yarn
-    - sudo pip install awsebcli
   cache_directories:
     - ~/.cache/yarn
 
@@ -24,4 +28,3 @@ deployment:
       - echo "pull request"
       - yarn run create
       - bash ./scripts/deploySandbox.sh
-
