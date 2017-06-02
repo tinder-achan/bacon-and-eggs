@@ -27,8 +27,10 @@ async.auto({
                     if (err.message === ENV_EXISTS_ERR_MSG) {
                         console.log("Env already exists");
                         isExistingEnv = true;
-                        cb(null);
+                        return cb(null);
                     }
+
+                    return cb(err);
                 }
                 console.log(data);
                 cb(null, data);
@@ -49,6 +51,7 @@ async.auto({
 
         eb.createApplicationVersion(params, function(err, data) {
             if (err) return cb(err);
+            console.log(JSON.stringify(data));
             return cb(null, data);
         });
     }],
@@ -61,7 +64,9 @@ async.auto({
         };
         eb.updateEnvironment(params, function(err, data) {
             if (err) return cb(err);
+            console.log(JSON.stringify(data));            
             envURL = data.CNAME;
+            return cb(null, data);
         });
     }],
 
