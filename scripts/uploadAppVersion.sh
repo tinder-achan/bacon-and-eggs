@@ -1,7 +1,7 @@
 S3_REGION=us-west-1
-S3_BUCKET=elasticbeanstalk-us-west-1-648980024845
-ZIP_FILENAME=$CIRCLE_BRANCH-$CIRCLE_SHA1-$CIRCLE_BUILD_NUM.zip
-ENV_TEMPLATE=sandboxes
+export S3_BUCKET=elasticbeanstalk-us-west-1-648980024845
+export ZIP_FILENAME=$CIRCLE_BRANCH-$CIRCLE_SHA1-$CIRCLE_BUILD_NUM.zip
+export ENV_TEMPLATE=sandboxes
 
 if [[ -z $S3_BUCKET ]]; then
 
