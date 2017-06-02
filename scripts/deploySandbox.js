@@ -102,8 +102,11 @@ async.auto({
 
     }]
 }, function(err) {
-    console.log(err);
-    process.exit(1);
+    if (err) {
+        console.log(err);
+        process.exit(1);
+    }
+    else {
+        process.exit(0);
+    }
 })
-
-
