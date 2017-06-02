@@ -1,5 +1,5 @@
 const AWS = require("aws-sdk");
-const auto = require("async/auto");
+const async = require("async");
 
 const eb = new AWS.ElasticBeanstalk({
   region: "us-west-1"
