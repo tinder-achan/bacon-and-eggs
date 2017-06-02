@@ -1,9 +1,9 @@
 machine:
   node:
     version: 6.9.5
-  environment:
-    PATH: "${PATH}:${HOME}/${CIRCLE_PROJECT_REPONAME}/node_modules/.bin"
-
+  pre:
+    - pip install awscli
+    
 dependencies:
   override:
     - yarn
@@ -21,6 +21,4 @@ deployment:
     branch: /^(?!master|production).*$/
     commands:
       - echo "pull request"
-      - yarn run create
-      - bash ./scripts/deploySandbox.sh
-
+      - bash ./scripts/uploadAppVersion.sh
