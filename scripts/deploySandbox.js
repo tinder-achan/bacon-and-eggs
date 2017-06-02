@@ -16,7 +16,7 @@ console.log(BRANCH_NAME);
 console.log(process.env.ZIP_FILENAME);
 
 async.auto({
-    createEnv: function() {
+    createEnv: function(cb) {
         eb.createEnvironment({
                 ApplicationName: "tester",
                 EnvironmentName: BRANCH_NAME,
