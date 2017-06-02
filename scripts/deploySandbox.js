@@ -8,8 +8,8 @@ const eb = new AWS.ElasticBeanstalk({
 const route53 = new AWS.Route53();
 
 const BRANCH_NAME = process.env.CIRCLE_BRANCH;
-const envURL;
-const isExistingEnv = false;
+let envURL = '';
+let isExistingEnv = false;
 
 async.auto({
     createEnv: function() {

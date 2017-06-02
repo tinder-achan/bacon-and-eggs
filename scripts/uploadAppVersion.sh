@@ -33,4 +33,4 @@ aws s3 cp $ZIP_FILENAME s3://$S3_BUCKET/sandboxes/$ZIP_FILENAME --grants full=em
 # aws elasticbeanstalk update-environment --application-name tester --environment-name $CIRCLE_BRANCH --version-label $ZIP_FILENAME
 # echo "Updated environment"
 
-node ./scripts/PRComment.js 
+node ./scripts/deploySandbox.js 
