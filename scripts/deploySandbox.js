@@ -20,7 +20,8 @@ async.auto({
         eb.createEnvironment({
                 ApplicationName: "tester",
                 EnvironmentName: BRANCH_NAME,
-                TemplateName: "sandboxes"
+                TemplateName: "sandboxes",
+                CNAMEPrefix: BRANCH_NAME
             },
             (err, data) => {
                 if (err) {
