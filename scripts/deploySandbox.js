@@ -11,7 +11,10 @@ const BRANCH_NAME = process.env.CIRCLE_BRANCH;
 let envURL = '';
 let isExistingEnv = false;
 
-async.auto({
+console.log(BRANCH_NAME);
+console.log(ZIP_FILENAME);
+
+async.waterfall({
     createEnv: function() {
         eb.createEnvironment({
                 ApplicationName: "tester",
