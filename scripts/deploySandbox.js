@@ -8,7 +8,7 @@ const eb = new AWS.ElasticBeanstalk({
 const route53 = new AWS.Route53();
 
 const BRANCH_NAME = process.env.CIRCLE_BRANCH;
-const ENV_EXISTS_ERR_MSG = "Environment sandbox already exists.";
+const ENV_EXISTS_ERR_MSG = "Environment " + BRANCH_NAME + " already exists.";
 let envURL = '';
 let isExistingEnv = false;
 
