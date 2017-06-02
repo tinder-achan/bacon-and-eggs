@@ -12,7 +12,7 @@ let envURL = '';
 let isExistingEnv = false;
 
 console.log(BRANCH_NAME);
-console.log(ZIP_FILENAME);
+console.log(process.env.ZIP_FILENAME);
 
 async.waterfall({
     createEnv: function() {
