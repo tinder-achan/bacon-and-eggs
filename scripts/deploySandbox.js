@@ -14,7 +14,7 @@ let isExistingEnv = false;
 console.log(BRANCH_NAME);
 console.log(process.env.ZIP_FILENAME);
 
-async.waterfall({
+async.auto({
     createEnv: function() {
         eb.createEnvironment({
                 ApplicationName: "tester",
@@ -36,7 +36,7 @@ async.waterfall({
 
     },
 
-    createAppVersion: function createAppVersion(cb) {
+    createAppVersion: ['createEnv', function createAppVersion(results, cb) {
         const params = {
             ApplicationName: 'tester',
             VersionLabel: process.env.ZIP_FILENAME,
@@ -50,9 +50,9 @@ async.waterfall({
             if (err) return cb(err);
             return cb(null, data);
         });
-    },
+    }],
 
-    updateEnv: function updateEnv(cb) {
+    updateEnv: ['createAppVersion', function updateEnv(results, cb) {
         const params = {
             ApplicationName: 'tester',
             EnvironmentName: BRANCH_NAME,
@@ -62,9 +62,9 @@ async.waterfall({
             if (err) return cb(err);
             envURL = data.CNAME;
         });
-    },
+    }],
 
-    createDNS: function createDNS(cb) {
+    createDNS: ['updateEnv', function createDNS(results, cb) {
         if (isExistingEnv) return cb();
         if (!envURL) return cb(new Error('No env url'));
 
@@ -94,7 +94,7 @@ async.waterfall({
             cb(null, data);
         });
 
-    }
+    }]
 }, function(err) {
     console.log(err);
     process.exit(1);
